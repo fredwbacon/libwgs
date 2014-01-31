@@ -1,0 +1,14 @@
+TEMPLATE     = lib
+TARGET       = wgs
+CONFIG      += @DLL@ @DEBUG@
+CONFIG      -= qt
+INCLUDEPATH += ../include
+
+# Input
+HEADERS += svm.h \
+           wgs.h
+SOURCES += svm.c \
+           wgs.c
+
+DESTDIR      = ../../@SYSTEM@-@ARCH@@PREFIX@/lib64
+

@@ -1,0 +1,10 @@
+TEMPLATE     = app
+TARGET       = wgsreader
+INCLUDEPATH += ../include
+CONFIG      += @DEBUG@
+CONFIG      -= qt
+LIBS        += -L../../@SYSTEM@-@ARCH@@PREFIX@/lib64 -lwgs -lm
+
+# Input
+SOURCES += main.c
+
