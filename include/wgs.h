@@ -34,6 +34,7 @@ struct _wgsObject {
 
 struct _wgsWireframe {
   char        name[81];
+  int         maxid;
   wgsObject*  objects;
 };
 

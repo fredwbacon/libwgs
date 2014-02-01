@@ -10,5 +10,5 @@ HEADERS += svm.h \
 SOURCES += svm.c \
            wgs.c
 
-DESTDIR      = ../../Linux-x86_64/SWFView/lib64
+DESTDIR      = ../../Linux-x86_64/SWFView/lib
 

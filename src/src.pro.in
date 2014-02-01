@@ -10,5 +10,5 @@ HEADERS += svm.h \
 SOURCES += svm.c \
            wgs.c
 
-DESTDIR      = ../../@SYSTEM@-@ARCH@@PREFIX@/lib64
+DESTDIR      = ../../@SYSTEM@-@ARCH@@PREFIX@/lib
 

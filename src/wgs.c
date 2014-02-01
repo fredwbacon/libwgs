@@ -14,7 +14,10 @@
 #define FALSE  0
 #endif
 
-
+#ifdef MAX
+#undef MAX
+#endif
+#define MAX(a,b)  (a)>(b) ? (a) : (b)
 
 void 
 wgs_read_name ( FILE* fptr, char* name )
@@ -133,6 +136,8 @@ wgs_wireframe_read ( FILE* fptr )
         
       current = obj;
 
+      wf->maxid = MAX(wf->maxid,obj->nobj);
+
       if ( feof( fptr ) )
         done = TRUE;
     }
@@ -159,6 +164,53 @@ wgs_object_new ( )
    return object;   
 }
 
+
+wgsObject*
+wgs_object_copy ( wgsObject* obj, int id )
+{
+  int        nl, np;
+  Vector3d*  points = NULL;
+  wgsObject* nobj = NULL;
+  
+  if ( obj == NULL )
+    return nobj;
+
+  nobj = wgs_object_new (  );
+  if ( nobj == NULL )
+    return nobj;
+
+  nl = obj->nline;
+  np = obj->npnt;
+
+  points = (Vector3d*)malloc( nl * np * sizeof(Vector3d) );
+  if ( points == NULL )
+    {
+      wgs_object_free ( nobj );
+      return NULL;
+    }
+
+  memcpy( nobj->name, obj->name, 81 );
+  memcpy( points, obj->points, nl*np*sizeof(Vector3d) );
+
+  nobj->nobj   = id;
+  nobj->nline  = obj->nline;
+  nobj->npnt   = obj->npnt;
+  nobj->isyml  = obj->isyml;
+  nobj->rx     = obj->rx;
+  nobj->ry     = obj->ry;
+  nobj->rz     = obj->rz;
+  nobj->tx     = obj->tx;
+  nobj->ty     = obj->ty;
+  nobj->tz     = obj->tz;
+  nobj->xscale = obj->xscale;
+  nobj->yscale = obj->yscale;
+  nobj->zscale = obj->zscale;
+  nobj->isymg  = obj->isymg;
+
+  nobj->points = points;
+
+  return nobj;
+}
 
 void
 wgs_object_free ( wgsObject* object )
@@ -286,3 +338,145 @@ wgs_object_read ( FILE* fptr )
   return object;
 }
 
+
+wgsObject*
+wgs_object_reflect ( wgsObject* obj, int id )
+{
+  char       tmp[81];
+  int        i, J, N, len;
+  wgsObject* refobj = NULL;
+  Vector3d*  points;
+
+  if ( obj->isyml <= 0 || obj->isyml > 3 )
+    return refobj;
+
+  refobj = wgs_object_copy ( obj, id );
+  if ( refobj == NULL )
+    return refobj;
+
+  points = refobj->points;
+  N = obj->nline * obj->npnt;
+
+  /* We need to deal with duplicate object names */
+  snprintf( tmp, 81, "%s", obj->name );
+  len = strlen ( tmp );
+  if ( len > 78 )
+    {
+       for ( i = 43; i < 81; i++ )
+         tmp[i-2] = tmp[i];
+    }
+
+  snprintf( obj->name, 81, "%s#%d", tmp, 1 );
+  snprintf( refobj->name, 81, "%s#%d", tmp, 2 );
+
+  switch ( obj->isyml )
+    {
+    case 1: J = 1; break;
+    case 2: J = 2; break;
+    case 3: J = 0; break;
+    } 
+
+  for ( i = 0; i < N; i++ )
+    points[i][J] = -points[i][J];
+
+  return refobj;
+}
+
+int
+wgs_object_needs_transform ( wgsObject* obj )
+{
+  if ( obj == NULL )
+    return FALSE;
+
+  if ( obj->rx != 0.0 || obj->ry != 0.0 || obj->rz != 0.0 )
+    return TRUE;
+
+  if ( obj->tx != 0.0 || obj->ty != 0.0 || obj->tz != 0.0 )
+    return TRUE;
+
+  if ( obj->xscale != 1.0 || obj->yscale != 1.0 || obj->zscale != 1.0 )
+    return TRUE;
+
+  return FALSE;
+}
+
+void
+wgs_object_transform ( wgsObject* obj )
+{
+  int       i, N;
+  Vector3d* points = NULL; 
+  if ( obj == NULL )
+    return;
+
+  if ( !wgs_object_needs_transform ( obj ) )
+    return;
+
+  points = obj->points;
+  if ( points == NULL )
+    return;
+
+  N = obj->nline * obj->npnt;
+
+  for ( i = 0; i < N; i++ )
+    matrix44d_mv ( obj->matrix, points[i], points[i] );
+
+  /* Since we've already applied the transform, set the transform to the identity. */
+  obj->rx = 
+  obj->ry = 
+  obj->rz = 
+  obj->tx = 
+  obj->ty = 
+  obj->tz = 0.0;
+
+  obj->xscale =
+  obj->yscale =
+  obj->zscale = 1.0;
+
+  matrix44d_normal ( obj->matrix );
+}
+
+
+void
+wgs_wireframe_convert_to_global ( wgsWireframe* wf )
+{
+  int        id;
+  wgsObject* obj    = NULL;
+  wgsObject* refobj = NULL;
+
+  if ( wf == NULL )
+    return;
+
+  id = wf->maxid;
+
+  /* Let's traverse the list of objects and see if they need to be transformed */
+  for ( obj = wf->objects; obj != NULL; obj = obj->next )
+    {
+      /* See if there is a local symmetry plane and apply it. */
+      if ( obj->isyml != 0 )
+        {
+          refobj = wgs_object_reflect ( obj, ++id );
+          if ( refobj != NULL )
+            {
+              /* We've already applied our symmetry, so 
+               * set both objects to have no symmetry. */
+              refobj->isyml = 0;
+              obj->isyml    = 0;
+
+              /* We're going to play a little trick here.
+               * We're inserting the new (reflected) object into
+               * the list after the current object.  Then we transform
+               * the current object, and set the current object to be
+               * the newly reflected object. */
+              refobj->next = obj->next;
+              obj->next = refobj;
+              wgs_object_transform ( obj );
+              obj = refobj;
+            }
+        }
+      
+      /* If there was no symmetry plane, then this object is 
+       * the same as we started with.  If there was a reflection,
+       * then this is actually the object's reflection. */
+      wgs_object_transform ( obj );
+    }
+}
