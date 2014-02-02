@@ -33,6 +33,8 @@ main( int argc, char* argv[] )
     }
 
   fprintf( stderr, "%s\n", wf->name );
+
+#if 0
   obj = wf->objects;
   while ( obj != NULL )
     {
@@ -51,7 +53,37 @@ main( int argc, char* argv[] )
          }
        obj = obj->next;
     }
+#endif
   
+  wgs_wireframe_convert_to_global ( wf );
+
+  fprintf ( stdout, "%s\n", wf->name );
+  fprintf ( stdout, "CM 0\n" );
+  fprintf ( stdout, "-10000.000-10000.000-10000.000           10000.000 10000.000 10000.000\n" );
+  fprintf ( stdout, "%5d\n", 0 );
+
+  for ( obj = wf->objects; obj != NULL; obj = obj->next )
+    fprintf( stdout, "%-40s%5d%5d%5d%5d%5d\n", obj->name, 1, 0, 0, 0, 0 );
+
+  fprintf ( stdout, "END PART NAMES\n" );
+  for ( obj = wf->objects; obj != NULL; obj = obj->next )
+    {
+      int i, j, k;
+
+      fprintf( stdout, "%-40s%-40s\n", obj->name, obj->name );
+      fprintf( stdout, "%5d%5d%5d%5d%5d%5d%5d\n", 1, 0, 0, 0, 0, 0, 0 );
+      fprintf( stdout, "%5d%5d\n", obj->npnt, obj->nline );
+      // matrix44d_write ( stderr, obj->matrix );
+      for ( i = 0, k = 0; i < obj->nline; i++ )
+        {
+          for ( j = 0; j < obj->npnt; j++, k++ )
+            {
+              fprintf( stdout, "%10.3f%10.3f%10.3f\n", obj->points[k][0], obj->points[k][1], obj->points[k][2] );
+            }
+        }
+    }
+
+  fprintf( stdout, "END OF FILE\n" );
 
   wgs_wireframe_free ( wf );
 

@@ -42,6 +42,7 @@ struct _wgsWireframe {
   wgsWireframe* wgs_wireframe_new (  );
   void          wgs_wireframe_free ( wgsWireframe* );
   wgsWireframe* wgs_wireframe_read ( FILE* );
+  void          wgs_wireframe_convert_to_global ( wgsWireframe* );
 
   wgsObject*    wgs_object_new ( );
   void          wgs_object_free ( wgsObject* );
