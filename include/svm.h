@@ -10,7 +10,7 @@ extern "C" {
   typedef double   Vector4d[4];
   typedef Vector4d Matrix44d[4];
 
-  void matrix44d_normal ( Matrix44d m44 );
+  void matrix44d_identity ( Matrix44d m44 );
   void matrix44d_write ( FILE* fptr, Matrix44d m44 );
 
   void matrix44d_mm ( Matrix44d, Matrix44d, Matrix44d );

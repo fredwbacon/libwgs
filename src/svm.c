@@ -7,7 +7,7 @@
 #include "svm.h"
 
 void
-matrix44d_normal ( Matrix44d m44 )
+matrix44d_identity ( Matrix44d m44 )
 {
    memset ( m44, 0, sizeof( Matrix44d ) );
    m44[0][0] =
@@ -54,36 +54,36 @@ matrix44d_set_scale ( Matrix44d m44, double xscale, double yscale, double zscale
 void
 matrix44d_xrotation_radians ( Matrix44d m44, double phi )
 {
-   matrix44d_normal ( m44 );
+   matrix44d_identity ( m44 );
  
    m44[1][1] = cos(phi);
    m44[2][2] = cos(phi);
-   m44[1][2] = -sin(phi);
-   m44[2][1] = sin(phi);
+   m44[1][2] = sin(phi);
+   m44[2][1] = -sin(phi);
 }
 
 
 void
 matrix44d_yrotation_radians ( Matrix44d m44, double theta )
 {
-  matrix44d_normal ( m44 );
+  matrix44d_identity ( m44 );
   
   m44[0][0] = cos(theta);
   m44[2][2] = cos(theta);
-  m44[0][2] = -sin(theta);
-  m44[2][0] = sin(theta);
+  m44[0][2] = sin(theta);
+  m44[2][0] = -sin(theta);
 }
 
 
 void
 matrix44d_zrotation_radians ( Matrix44d m44, double psi )
 {
-  matrix44d_normal ( m44 );
+  matrix44d_identity ( m44 );
 
   m44[0][0] = cos(psi);
   m44[1][1] = cos(psi);
-  m44[0][1] = -sin(psi);
-  m44[1][0] = sin(psi);
+  m44[0][1] = sin(psi);
+  m44[1][0] = -sin(psi);
 }
 
 

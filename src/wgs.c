@@ -159,7 +159,7 @@ wgs_object_new ( )
    /* Make sure that everything is properly zeroed out */
    memset( object, 0, sizeof(wgsObject) );
 
-   matrix44d_normal ( object->matrix );
+   matrix44d_identity ( object->matrix );
 
    return object;   
 }
@@ -432,7 +432,7 @@ wgs_object_transform ( wgsObject* obj )
   obj->yscale =
   obj->zscale = 1.0;
 
-  matrix44d_normal ( obj->matrix );
+  matrix44d_identity ( obj->matrix );
 }
 
 
