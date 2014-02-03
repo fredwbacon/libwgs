@@ -191,6 +191,7 @@ wgs_object_copy ( wgsObject* obj, int id )
 
   memcpy( nobj->name, obj->name, 81 );
   memcpy( points, obj->points, nl*np*sizeof(Vector3d) );
+  memcpy( nobj->matrix, obj->matrix, sizeof(Matrix44d) );
 
   nobj->nobj   = id;
   nobj->nline  = obj->nline;
