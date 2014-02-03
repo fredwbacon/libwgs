@@ -344,7 +344,7 @@ wgsObject*
 wgs_object_reflect ( wgsObject* obj, int id )
 {
   char       tmp[81];
-  int        i, J, N, len;
+  int        i, J, N, len, nl, np, j1, j2;
   wgsObject* refobj = NULL;
   Vector3d*  points;
 
@@ -356,7 +356,9 @@ wgs_object_reflect ( wgsObject* obj, int id )
     return refobj;
 
   points = refobj->points;
-  N = obj->nline * obj->npnt;
+  nl = obj->nline;
+  np = obj->npnt;
+  N = nl * np;
 
   /* We need to deal with duplicate object names */
   snprintf( tmp, 81, "%s", obj->name );
@@ -377,8 +379,29 @@ wgs_object_reflect ( wgsObject* obj, int id )
     case 3: J = 0; break;
     } 
 
+  /* Apply the symmetry operation. */
   for ( i = 0; i < N; i++ )
     points[i][J] = -points[i][J];
+
+  /* Now we need to swap the order of the points in each line 
+   * so that the surface isn't inside out. */
+  for ( i = 0; i < nl; i++ )
+    {
+      for ( j1 = 0, j2 = np-1; j1 <= j2; j1++, j2-- )
+        {
+          double x = points[i*np+j1][0];
+          double y = points[i*np+j1][1];
+          double z = points[i*np+j1][2];
+
+          points[i*np+j1][0] = points[i*np+j2][0];
+          points[i*np+j1][1] = points[i*np+j2][1];
+          points[i*np+j1][2] = points[i*np+j2][2];
+
+          points[i*np+j2][0] = x;
+          points[i*np+j2][1] = y;
+          points[i*np+j2][2] = z;
+        }
+    }
 
   return refobj;
 }
