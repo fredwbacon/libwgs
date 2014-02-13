@@ -6,6 +6,9 @@
 
 #include "wgs.h"
 
+#ifdef WIN32
+#define snprintf  _snprintf
+#endif
 
 #ifndef TRUE
 #define TRUE   1
@@ -18,6 +21,8 @@
 #undef MAX
 #endif
 #define MAX(a,b)  (a)>(b) ? (a) : (b)
+
+#define M_PI  3.1412592653589793238462643383
 
 void 
 wgs_read_name ( FILE* fptr, char* name )
