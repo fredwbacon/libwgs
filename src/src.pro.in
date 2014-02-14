@@ -10,5 +10,11 @@ HEADERS += svm.h \
 SOURCES += svm.c \
            wgs.c
 
-DESTDIR      = ../../@SYSTEM@-@ARCH@@PREFIX@/lib64
+linux-g++ {
+  DESTDIR      = ../../@SYSTEM@-@ARCH@@PREFIX@/lib64
+}
 
+win32 {
+  TARGET    = libwgs
+  TEMPLATE  = vclib
+}
