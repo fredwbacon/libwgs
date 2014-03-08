@@ -1,0 +1,14 @@
+DEFINES        += USE_WGS
+
+linux-g++ {
+  WGS_BASE     = /home/bacon/Frameworks/libwgs
+  INCLUDEPATH  += $${WGS_BASE}/include/libwgs
+  LIBS         += -L$${WGS_BASE}/lib -lwgs
+}
+
+win32 {
+  WGS_BASE     = C:/local
+  INCLUDEPATH  += $${WGS_BASE}/include/libwgs
+  LIBS         += -L$${WGS_BASE}/lib libwgs.lib
+}
+

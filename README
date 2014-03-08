@@ -1,0 +1,2 @@
+The libwgs library contains a set of functions and data structures
+for reading, writing and manipulating Langley Wireframe Geometry files.

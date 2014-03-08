@@ -1,0 +1,3 @@
+#!/bin/bash
+
+publican create --type=book --lang=en-US --brand=aerodyne --edition=1.0 --name="User Manual" --product=$1 --version=$2

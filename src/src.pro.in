@@ -11,7 +11,29 @@ SOURCES += svm.c \
            wgs.c
 
 linux-g++ {
-  DESTDIR      = ../../@SYSTEM@-@ARCH@@PREFIX@/lib64
+  DESTDIR      = ../@SYSTEM@-@ARCH@@PREFIX@/lib
+
+  headers.path  = @PREFIX@/include/libwgs
+  headers.files = ../include/*.h
+
+  help.path     = @PREFIX@/doc/html
+  help.files    = ../doc/api/html/*
+
+  tags.path     = @PREFIX@/doc
+  tags.files    = ../doc/libwgs.tag
+
+  pdf.path      = @PREFIX@/doc
+  pdf.files     = ../doc/libwgs.pdf ../doc/format/*.pdf
+
+  prf.path      = /features
+  prf.files     = ../share/wgs.prf 
+
+  qch.path      = @PREFIX@/doc
+  qch.files     = ../doc/libwgs.qch
+
+  target.path    = @PREFIX@/lib
+
+  INSTALLS      += target headers help prf tags pdf qch
 }
 
 win32 {

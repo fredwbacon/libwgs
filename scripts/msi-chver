@@ -1,0 +1,10 @@
+#!/bin/sh
+UUID=`uuidgen | tr [a-z] [A-Z]`
+if [ -f $1.isl ]; then
+  sed "/^[ 	]*<row><td>ProductCode/s/{[^}]*}/{$UUID}/;/^[ 	]*<row><td>ProductVersion/s/[1-9]*\.[0-9]*\.[0-9]/${2}.${3}.${4}/;" $1.isl > tmp.isl
+  cp tmp.isl $1.isl
+fi
+if [ -f $1.vdproj ]; then
+  sed "/\"ProductCode\" = \"8:{/s/{[^}]*}/{$UUID}/;/ProductVersion/s/:[^\"]*\"/:${2}.${3}.${4}\"/;/OutputFilename/s/SWFView-[^\"]*\"/SWFView-${2}.${3}.${4}.msi\"/;" $1.vdproj > tmp.vdproj
+  cp tmp.vdproj $1.vdproj
+fi

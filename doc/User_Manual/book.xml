@@ -1,0 +1,10 @@
+<!DOCTYPE QariBook>
+<qaribook version="2.0">
+  <section title="libwgs User Manual" file="index.html">
+    <section title="Preface" file="pref-User_Manual-Preface.html">
+      <section title="We Need Feedback!" file="pr01s02.html"/>
+    </section>
+    <section title="Introduction" file="chap-User_Manual-Introduction.html"/>
+    <section title="Revision History" file="appe-User_Manual-Revision_History.html"/>
+  </section>
+</qaribook>

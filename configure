@@ -1,0 +1,89 @@
+#!/bin/sh
+# Configuration requires that we rebuild the top level Makefiles
+# in this directory and lower directories
+
+SYSTEM=`uname -s`
+UNAME=`uname -a`
+PROFILE=
+PREFIX="\/usr\/local"
+USER=root
+OPENGL="opengl"
+
+case $SYSTEM in
+  IRIX*)
+   system=sgi;
+   GROUP=sys;
+   ARCH=`uname -r`;;
+  Linux)
+   system=linux;
+   GROUP=root;
+   PREFIX="\/libwgs";
+   ARCH=`uname -m`;;
+  SunOS)
+   system=sun;
+   GROUP=bin;
+   ARCH=`uname -r`;;
+  Darwin)
+   system=macosx;
+   GROUP=admin;
+   ARCH=`uname -p`;;
+  *)
+   system=unknown;;
+esac;
+
+DEBUG="debug"
+STATIC=""
+DLL="staticlib"
+
+
+for x in $@
+do
+  case $x in
+  --nodebug)
+    DEBUG="";;
+  --shared) 
+    DLL="dll";;
+  --static)
+    STATIC="-static";;
+  --gprof)
+    PROFILE="-pg";;
+  --help|-h)
+    echo "Usage: configure [options]";
+    echo "    --nodebug     disable support for debugging";
+    echo "    --shared      build libraries as dynamically linkable shared objects";
+    echo "    --static      build a staticly linked version."; 
+    echo "    --help|-h     display this help message";
+    exit;;
+  *)
+    echo "unknown option $x";
+    exit;;
+  esac
+done
+
+echo ""
+echo "Removing old Makefiles"
+echo ""
+rm -f `find . -name Makefile`
+
+echo "Configuring libwgs..."
+echo -n "Generating documentation..."
+make -C doc
+echo "Done."
+
+#
+# We need to set the appropriate architecture
+#
+for x in `find . -name \*.pro.in` 
+do
+  dir=`dirname $x`
+  y=`basename $x .in`
+  echo -n "Generating project file $dir/$y ... "
+  sed "s/@PREFIX@/$PREFIX/g;s/@GROUP@/$GROUP/g;s/@USER@/$USER/g;s/@PROFILE@/$PROFILE/g;s/@SYSTEM@/$SYSTEM/g;s/@ARCH@/$ARCH/g;s/@DLL@/$DLL/g;s/@STATIC@/$STATIC/;s/@DEBUG@/$DEBUG/;s/@system@/$system/g" $x > $dir/$y
+  echo "Done."
+done
+
+echo ""
+echo -n "Creating make files..."
+qmake -r
+echo "Done."
+
