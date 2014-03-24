@@ -53,7 +53,7 @@ wgs_read_name ( FILE* fptr, char* name )
            break;
          case '\'':
          case ' ':
-           if ( i != 0 )
+           if ( i != 0 && i < 80 )
              name[i++] = c;
            break;
          default:

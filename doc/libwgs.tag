@@ -2,7 +2,7 @@
 <tagfile>
   <compound kind="file">
     <name>svm.c</name>
-    <path>/home/bacon/Sandbox/libwgs/src/</path>
+    <path>/home/bacon/Projects/ARISoftware/libwgs/src/</path>
     <filename>svm_8c</filename>
     <member kind="function">
       <type>void</type>
@@ -70,7 +70,7 @@
   </compound>
   <compound kind="file">
     <name>wgs.c</name>
-    <path>/home/bacon/Sandbox/libwgs/src/</path>
+    <path>/home/bacon/Projects/ARISoftware/libwgs/src/</path>
     <filename>wgs_8c</filename>
     <member kind="define">
       <type>#define</type>
