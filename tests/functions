@@ -1,0 +1,32 @@
+declare -i fail
+fail=0
+ntests=0
+
+SYSTEM=`uname -s`
+ARCH=`uname -m`
+VALGRIND="valgrind --tool=memcheck --leak-check=full --log-file=valgrind.log"
+
+check_file ( ) {
+  ((ntests++))
+  SHA1=`sha1sum $2`
+  if [[ $SHA1 != "$3  $2" ]] ; then
+    ((fail++));
+    echo "FAIL : $1";
+  else
+    echo "PASS : $1";
+  fi 
+}
+
+check_valgrind ( ) {
+  if [[ $SYSTEM == "Linux" ]]; then
+    grep "ERROR SUMMARY" valgrind.log | sed "s/^==[0-9]*== //"
+  fi
+}
+
+print_summary ( ) {
+  if [[ fail -eq 0 ]]; then
+    echo "$fail failures: All tests passed";
+  else
+    echo "$fail of $ntests tests failed";
+  fi
+}
