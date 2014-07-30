@@ -1,5 +1,7 @@
 DEFINES        += USE_WGS
 
+include(wgsconfig.pri)
+
 linux-g++ {
   WGS_BASE     = /home/bacon/Frameworks/libwgs
   INCLUDEPATH  += $${WGS_BASE}/include/libwgs
@@ -7,7 +9,7 @@ linux-g++ {
 }
 
 win32 {
-  WGS_BASE     = C:/local
+  WGS_BASE     = $${WGS_INSTALL_PREFIX}
   INCLUDEPATH  += $${WGS_BASE}/include/libwgs
   LIBS         += -L$${WGS_BASE}/lib libwgs.lib
 }
