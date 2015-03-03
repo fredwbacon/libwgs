@@ -7,13 +7,18 @@ linux-g++ {
 }
 
 win32 {
-  contains(QMAKE_TARGET.arch,x86_64) {
-    WGS_BASE    = C:/local/msvc2013_win64
+  contains(QMAKE_TARGET.arch, x86_64) {
+    WGS_BASE="C:/local/msvc2013_win64"
   } else {
-    WGS_BASE    = C:/local/msvc2013_win32 
+    WGS_BASE="C:/local/msvc2013_win32"
   }
-
   INCLUDEPATH  += $${WGS_BASE}/include/libwgs
+
+  CONFIG(debug,release|debug) {
+    LIBS       += $${WGS_BASE}/lib/libwgsd.lib
+  } else {
+    LIBS       += $${WGS_BASE}/lib/libwgs.lib
+  }
 
   CONFIG(debug,release|debug) {
     LIBS       += $${WGS_BASE}/lib/libwgsd.lib
