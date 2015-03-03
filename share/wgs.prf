@@ -12,13 +12,8 @@ win32 {
   } else {
     WGS_BASE="C:/local/msvc2013_win32"
   }
-  INCLUDEPATH  += $${WGS_BASE}/include/libwgs
 
-  CONFIG(debug,release|debug) {
-    LIBS       += $${WGS_BASE}/lib/libwgsd.lib
-  } else {
-    LIBS       += $${WGS_BASE}/lib/libwgs.lib
-  }
+  INCLUDEPATH  += $${WGS_BASE}/include/libwgs
 
   CONFIG(debug,release|debug) {
     LIBS       += $${WGS_BASE}/lib/libwgsd.lib
