@@ -1,17 +1,19 @@
-WGS_VERSION=1.3.0
-
 linux {
-  WGS_INSTALL_PREFIX  = $$(HOME)/Frameworks/libwgs/$${WGS_VERSION}
+  WGS_INSTALL_PREFIX  = $$(HOME)/Frameworks/libwgs/$${VERSION}
   WGS_FEATURES_PATH   = $$(QMAKEFEATURES)
 }
 
 win32 {
-  WGS_INSTALL_PREFIX  = $$[QT_INSTALL_PREFIX]
-  WGS_FEATURES_PATH   = $$[QT_INSTALL_PREFIX]/mkspecs/features
+  contains(QMAKE_TARGET.arch,x86_64) {
+    WGS_INSTALL_PREFIX   = C:/local/msvc2013_win64
+  } else {
+    WGS_INSTALL_PREFIX   = C:/local/msvc2013_win32
+  }
+  WGS_FEATURES_PATH   = $$(QMAKEFEATURES)
 }
 
 macx {
-  WGS_INSTALL_PREFIX   = $$(HOME)/Development/libwgs
+  WGS_INSTALL_PREFIX   = $$(HOME)/Development/libwgs/$${VERSION}
   WGS_FEATURES_PATH    = $$(QMAKEFEATURES)
 }
 

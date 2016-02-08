@@ -7,22 +7,15 @@ UNAME=`uname -a`
 PROFILE=
 PREFIX="\/usr\/local"
 USER=root
+VERSION=1.0.0
 ECHO=echo
 
 case $SYSTEM in
-  IRIX*)
-   system=sgi;
-   GROUP=sys;
-   ARCH=`uname -r`;;
   Linux)
    system=linux;
    GROUP=root;
    PREFIX="\/libwgs";
    ARCH=`uname -m`;;
-  SunOS)
-   system=sun;
-   GROUP=bin;
-   ARCH=`uname -r`;;
   Darwin)
    system=macosx;
    GROUP=admin;
@@ -33,7 +26,7 @@ case $SYSTEM in
    system=unknown;;
 esac;
 
-DEBUG="debug"
+DEBUG=""
 STATIC=""
 DLL="staticlib"
 
@@ -76,6 +69,12 @@ do
   sed "s/@PREFIX@/$PREFIX/g;s/@GROUP@/$GROUP/g;s/@USER@/$USER/g;s/@PROFILE@/$PROFILE/g;s/@SYSTEM@/$SYSTEM/g;s/@ARCH@/$ARCH/g;s/@DLL@/$DLL/g;s/@STATIC@/$STATIC/;s/@DEBUG@/$DEBUG/;s/@system@/$system/g" $x > $dir/$y
   $ECHO "Done."
 done
+
+if [ -f doc/Doxyfile.in ]; then
+  QHG=`which qhelpgenerator | sed "s/\//\|/g"`;
+  sed "/^PROJECT_NUMBER/s/= .*$/= $VERSION/;/^QHG_LOCATION/s/= .*$/= $QHG/;/^QHG_LOCATION/s/\|/\//g" doc/Doxyfile.in > doc/Doxyfile
+fi
+
 
 $ECHO -n "Creating make files..."
 qmake -r

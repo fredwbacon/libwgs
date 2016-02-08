@@ -1,7 +1,9 @@
 DEFINES        += USE_WGS
 
+include(wgsconfig.pri)
+
 linux-g++ {
-  WGS_BASE     = /home/bacon/Frameworks/libwgs
+  WGS_BASE      = $$(HOME)/Frameworks/libwgs/current
   INCLUDEPATH  += $${WGS_BASE}/include/libwgs
   LIBS         += -L$${WGS_BASE}/lib -lwgs
 }
@@ -23,3 +25,13 @@ win32 {
   }
 }
 
+macx {
+   WGS_BASE     = $$(HOME)/Development/libwgs/current
+   INCLUDEPATH += ${WGS_BASE}/include/libwgs
+
+  CONFIG(debug,release|debug) {
+    LIBS       += -L$${WGS_BASE}/lib -lwgs
+  } else {
+    LIBS       += -L$${WGS_BASE}/lib -lwgs_debug
+  }
+}
