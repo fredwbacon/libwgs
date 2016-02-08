@@ -1,8 +1,10 @@
 TEMPLATE     = lib
 TARGET       = wgs
 CONFIG      += @DLL@ @DEBUG@
-CONFIG      -= qt
 INCLUDEPATH += ../include
+
+include(../share/wgsbuild.pri)
+include(../share/wgsconfig.pri)
 
 # Input
 HEADERS += svm.h \
@@ -11,32 +13,50 @@ SOURCES += svm.c \
            wgs.c
 
 linux-g++ {
-  DESTDIR      = ../@SYSTEM@-@ARCH@@PREFIX@/lib
-
-  headers.path  = @PREFIX@/include/libwgs
-  headers.files = ../include/*.h
-
-  help.path     = @PREFIX@/doc/html
-  help.files    = ../doc/api/html/*
-
-  tags.path     = @PREFIX@/doc
-  tags.files    = ../doc/libwgs.tag
-
-  pdf.path      = @PREFIX@/doc
-  pdf.files     = ../doc/libwgs.pdf ../doc/format/*.pdf
-
-  prf.path      = /features
-  prf.files     = ../share/wgs.prf 
-
-  qch.path      = @PREFIX@/doc
-  qch.files     = ../doc/libwgs.qch
-
-  target.path    = @PREFIX@/lib
-
-  INSTALLS      += target headers help prf tags pdf qch
+  DESTDIR     = ../@SYSTEM@-@ARCH@@PREFIX@/lib
 }
+
 
 win32 {
-  TARGET    = libwgs
-  TEMPLATE  = vclib
+  TARGET      = libwgs
+  CONFIG(debug, debug|release) {
+    TARGET    = $$join(TARGET,,,d)
+  }
+
+  DEFINES    += _CRT_SECURE_NO_DEPRECATE
+  GUID        = B2FA754D-5959-37D7-B1CC-96888E0AFE82
 }
+
+
+macx {
+  TARGET      = wgs
+  CONFIG(debug, debug|release) {
+   TARGET     = $$join(TARGET,,,_debug)
+  }
+
+  DESTDIR     = ../@SYSTEM@-@ARCH@@PREFIX@/lib
+}
+
+
+target.path   = $${WGS_INSTALL_LIBS}
+
+help.path     = $${WGS_INSTALL_DOCS}
+help.files    = ../doc/api/html/*
+
+tags.path     = $${WGS_INSTALL_DOCS}
+tags.files    = ../doc/Qari.tag
+
+pdf.path      = $${WGS_INSTALL_DOCS}
+pdf.files     = ../doc/Qari.pdf
+
+qch.path      = $${WGS_INSTALL_DOCS}
+qch.files     = ../doc/Qari.qch
+
+prf.path      = $${WGS_FEATURES_PATH}
+prf.files     = ../share/wgs.prf ../share/wgsconfig.pri
+
+headers.path  = $${WGS_INSTALL_PREFIX}/include/libwgs
+headers.files = $${HEADERS}
+
+INSTALLS     += target headers prf help tags pdf qch
+
