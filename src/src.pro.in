@@ -44,13 +44,13 @@ help.path     = $${WGS_INSTALL_DOCS}
 help.files    = ../doc/api/html/*
 
 tags.path     = $${WGS_INSTALL_DOCS}
-tags.files    = ../doc/Qari.tag
+tags.files    = ../doc/libwgs.tag
 
 pdf.path      = $${WGS_INSTALL_DOCS}
-pdf.files     = ../doc/Qari.pdf
+pdf.files     = ../doc/libwgs.pdf
 
 qch.path      = $${WGS_INSTALL_DOCS}
-qch.files     = ../doc/Qari.qch
+qch.files     = ../doc/libwgs.qch
 
 prf.path      = $${WGS_FEATURES_PATH}
 prf.files     = ../share/wgs.prf ../share/wgsconfig.pri

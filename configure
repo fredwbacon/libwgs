@@ -7,7 +7,6 @@ UNAME=`uname -a`
 PROFILE=
 PREFIX="\/usr\/local"
 USER=root
-OPENGL="opengl"
 ECHO=echo
 
 case $SYSTEM in
@@ -27,7 +26,8 @@ case $SYSTEM in
   Darwin)
    system=macosx;
    GROUP=admin;
-   ARCH=`uname -p`;
+   PREFIX="\/libwgs";
+   ARCH=`uname -m`;
    ECHO=/bin/echo;;
   *)
    system=unknown;;
@@ -41,7 +41,7 @@ DLL="staticlib"
 for x in $@
 do
   case $x in
-  --nodebug)
+  --nodebug|--release)
     DEBUG="";;
   --shared) 
     DLL="dll";;

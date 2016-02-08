@@ -22,7 +22,9 @@
 #endif
 #define MAX(a,b)  (a)>(b) ? (a) : (b)
 
+#ifndef M_PI
 #define M_PI  3.1412592653589793238462643383
+#endif
 
 void 
 wgs_read_name ( FILE* fptr, char* name )
