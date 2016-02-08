@@ -1,3 +1,7 @@
+/* 
+ *  Copyright (C) 2016 Aerodyne Research - All Rights Reserved
+ */
+
 #ifndef WGS_H
 #define WGS_H
 
