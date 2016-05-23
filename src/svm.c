@@ -1,3 +1,7 @@
+/* 
+ *  Copyright (C) 2016 Aerodyne Research - All Rights Reserved
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

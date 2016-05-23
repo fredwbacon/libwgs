@@ -19,4 +19,13 @@ win32 {
 
     CONFIG           += debug_and_release
     CONFIG           += build_all
+    CONFIG           += staticlib
 }
+
+macx {
+    CONFIG           += debug_and_release
+    CONFIG           += build_all
+    CONFIG           += staticlib
+}
+
+
