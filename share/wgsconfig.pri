@@ -13,7 +13,7 @@ win32 {
 }
 
 macx {
-  WGS_INSTALL_PREFIX   = $$(HOME)/Development/libwgs/$${VERSION}
+  WGS_INSTALL_PREFIX   = $$(HOME)/Developer/libwgs/$${VERSION}
   WGS_FEATURES_PATH    = $$(QMAKEFEATURES)
 }
 
