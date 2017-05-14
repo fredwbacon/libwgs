@@ -1,3 +1,7 @@
+/* 
+ *  Copyright (C) 2016 Aerodyne Research - All Rights Reserved
+ */
+
 #ifndef SVM_H
 #define SVM_H
 

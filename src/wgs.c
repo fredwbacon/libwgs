@@ -1,3 +1,7 @@
+/* 
+ *  Copyright (C) 2016 Aerodyne Research - All Rights Reserved
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,7 +26,9 @@
 #endif
 #define MAX(a,b)  (a)>(b) ? (a) : (b)
 
+#ifndef M_PI
 #define M_PI  3.1412592653589793238462643383
+#endif
 
 void 
 wgs_read_name ( FILE* fptr, char* name )
