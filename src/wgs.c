@@ -388,6 +388,7 @@ wgs_object_reflect ( wgsObject* obj, int id )
     case 1: J = 1; break;
     case 2: J = 2; break;
     case 3: J = 0; break;
+    default: J = 1; break;
     } 
 
   /* Apply the symmetry operation. */

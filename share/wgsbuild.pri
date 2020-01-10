@@ -10,6 +10,11 @@ CONFIG           += silent
 # release/debug mode
 ######################################################################
 
+linux {
+    CONFIG           += build_all
+    CONFIG           += staticlib
+}
+
 win32 {
     # On Windows you can't mix release and debug libraries.
     # The designer is built in release mode. If you like to use it

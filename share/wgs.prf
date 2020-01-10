@@ -2,7 +2,7 @@ DEFINES        += USE_WGS
 
 include(wgsconfig.pri)
 
-linux-g++ {
+linux {
   WGS_BASE      = $$(HOME)/Frameworks/libwgs/current
   INCLUDEPATH  += $${WGS_BASE}/include/libwgs
   LIBS         += -L$${WGS_BASE}/lib -lwgs
