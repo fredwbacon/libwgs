@@ -2,7 +2,7 @@ TEMPLATE     = lib
 TARGET       = wgs
 CONFIG      += staticlib 
 INCLUDEPATH += ../include
-VERSION      = 1.0.0
+VERSION      = 1.0.1
 
 include(../share/wgsbuild.pri)
 include(../share/wgsconfig.pri)
@@ -14,7 +14,7 @@ SOURCES += svm.c \
            wgs.c
 
 linux {
-  DESTDIR       = ${SOLUTIONDIR}/Linux-x86_64/libwgs/lib
+  DESTDIR       = $${SOLUTIONDIR}/Linux-x86_64/libwgs/lib
 }
 
 
@@ -35,7 +35,7 @@ macx {
    TARGET       = $$join(TARGET,,,_debug)
   }
 
-  DESTDIR       = ${SOLUTIONDIR}/Darwin-x86_64/libwgs/lib
+  DESTDIR       = $${SOLUTIONDIR}/Darwin-x86_64/libwgs/lib
 }
 
 target.path     = $${WGS_INSTALL_LIBS}
