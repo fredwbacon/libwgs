@@ -2,31 +2,10 @@
 # Configuration requires that we rebuild the top level Makefiles
 # in this directory and lower directories
 
-SYSTEM=`uname -s`
-UNAME=`uname -a`
-VERSION=1.0.0
-ECHO=echo
 
-case $SYSTEM in
-  Linux)
-   system=linux;
-   GROUP=root;
-   PREFIX="\/libwgs";
-   ARCH=`uname -m`;;
-  Darwin)
-   system=macosx;
-   GROUP=admin;
-   PREFIX="\/libwgs";
-   ARCH=`uname -m`;
-   ECHO=/bin/echo;;
-  *)
-   system=unknown;;
-esac;
+ECHO=/bin/echo
 
-
-$ECHO "Removing old Makefiles"
-rm -f `find . -name Makefile`
-
+$ECHO ""
 $ECHO -n "Creating make files..."
 qmake -r SOLUTIONDIR=`pwd`
 $ECHO "Done."
