@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QtHelpProject version="1.0">
+  <namespace>com.aerodyne.libwgs.1.0.1</namespace>
+  <virtualFolder>doc</virtualFolder>
+  <filterSection>
+    <filterAttribute>doxygen</filterAttribute>
+    <toc>
+      <section title="Langley Wireframe Geometry Library 1.0.1" ref="index.html">
+        <section title="Files" ref="files.html">
+          <section title="File List" ref="files.html">
+            <section title="svm.c" ref="svm_8c.html">
+              <section title="matrix44d_identity" ref="svm_8c.html#a7582981fc49312318bbf2a68ee53c4c0" />
+              <section title="matrix44d_mm" ref="svm_8c.html#a88a4be7531fdb64b41f2d886117c2e7d" />
+              <section title="matrix44d_mv" ref="svm_8c.html#a6c83a623ec3c288c820d6f58e135f09e" />
+              <section title="matrix44d_set_scale" ref="svm_8c.html#a9866b8f35b4ed4638a6976e5bce74ec2" />
+              <section title="matrix44d_set_translate" ref="svm_8c.html#ac39f1393d2f5a86af3637ef8b62c66b3" />
+              <section title="matrix44d_write" ref="svm_8c.html#acaeef2d55b408fa186e49b9f021c9ea1" />
+              <section title="matrix44d_xrotation_radians" ref="svm_8c.html#a39148b2562bed6e9bfbe810a578fb566" />
+              <section title="matrix44d_yrotation_radians" ref="svm_8c.html#ae6d094067b5fbe7eb386bfd7f16009d5" />
+              <section title="matrix44d_zrotation_radians" ref="svm_8c.html#a2fe9cc96d0a25cda7dbcfb140deb8f68" />
+            </section>
+            <section title="wgs.c" ref="wgs_8c.html">
+              <section title="FALSE" ref="wgs_8c.html#aa93f0eb578d23995850d61f7d61c55c1" />
+              <section title="M_PI" ref="wgs_8c.html#ae71449b1cc6e6250b91f539153a7a0d3" />
+              <section title="MAX" ref="wgs_8c.html#afa99ec4acc4ecb2dc3c2d05da15d0e3f" />
+              <section title="TRUE" ref="wgs_8c.html#aa8cecfc5c5c054d2875c03e77b7be15d" />
+              <section title="wgs_object_allocate" ref="wgs_8c.html#abc29f4282912734b4df9c914f984b046" />
+              <section title="wgs_object_copy" ref="wgs_8c.html#a00354bc4f9e11e9dfcdc217778fef4c6" />
+              <section title="wgs_object_free" ref="wgs_8c.html#a0c6368554f089ea0b5fb2fc758339739" />
+              <section title="wgs_object_needs_transform" ref="wgs_8c.html#af9c6d3f4fc32506c6806ed811fb4e1bf" />
+              <section title="wgs_object_new" ref="wgs_8c.html#a80555428160096300888bf440ed46f41" />
+              <section title="wgs_object_read" ref="wgs_8c.html#aab29ffb71cc92166de3ade05313f2ea5" />
+              <section title="wgs_object_reallocate" ref="wgs_8c.html#a43cc589de9d411a8755fa8ae1971b1e6" />
+              <section title="wgs_object_reflect" ref="wgs_8c.html#ac688d5f7a1f30a22ff3dfbf13a2f6fdb" />
+              <section title="wgs_object_transform" ref="wgs_8c.html#a077abc770338b61fd902416b33580ed1" />
+              <section title="wgs_read_name" ref="wgs_8c.html#a40613a3ec80b6172b296d1af74b4fd02" />
+              <section title="wgs_wireframe_convert_to_global" ref="wgs_8c.html#a5cadd93880921b4c0289c19c5575e346" />
+              <section title="wgs_wireframe_free" ref="wgs_8c.html#ac02680ab7c5def6b7753d7163356f0a2" />
+              <section title="wgs_wireframe_new" ref="wgs_8c.html#aca827bd3ee82263245de29cd904241b9" />
+              <section title="wgs_wireframe_read" ref="wgs_8c.html#a3edd80afcf2812221ee5800cf95d8259" />
+            </section>
+          </section>
+          <section title="Globals" ref="globals.html">
+            <section title="All" ref="globals.html" />
+            <section title="Functions" ref="globals_func.html" />
+            <section title="Macros" ref="globals_defs.html" />
+          </section>
+        </section>
+      </section>
+    </toc>
+    <keywords>
+      <keyword name="matrix44d_identity" id="svm.c::matrix44d_identity" ref="svm_8c.html#a7582981fc49312318bbf2a68ee53c4c0" />
+      <keyword name="matrix44d_write" id="svm.c::matrix44d_write" ref="svm_8c.html#acaeef2d55b408fa186e49b9f021c9ea1" />
+      <keyword name="matrix44d_set_translate" id="svm.c::matrix44d_set_translate" ref="svm_8c.html#ac39f1393d2f5a86af3637ef8b62c66b3" />
+      <keyword name="matrix44d_set_scale" id="svm.c::matrix44d_set_scale" ref="svm_8c.html#a9866b8f35b4ed4638a6976e5bce74ec2" />
+      <keyword name="matrix44d_xrotation_radians" id="svm.c::matrix44d_xrotation_radians" ref="svm_8c.html#a39148b2562bed6e9bfbe810a578fb566" />
+      <keyword name="matrix44d_yrotation_radians" id="svm.c::matrix44d_yrotation_radians" ref="svm_8c.html#ae6d094067b5fbe7eb386bfd7f16009d5" />
+      <keyword name="matrix44d_zrotation_radians" id="svm.c::matrix44d_zrotation_radians" ref="svm_8c.html#a2fe9cc96d0a25cda7dbcfb140deb8f68" />
+      <keyword name="matrix44d_mm" id="svm.c::matrix44d_mm" ref="svm_8c.html#a88a4be7531fdb64b41f2d886117c2e7d" />
+      <keyword name="matrix44d_mv" id="svm.c::matrix44d_mv" ref="svm_8c.html#a6c83a623ec3c288c820d6f58e135f09e" />
+      <keyword name="TRUE" id="wgs.c::TRUE" ref="wgs_8c.html#aa8cecfc5c5c054d2875c03e77b7be15d" />
+      <keyword name="FALSE" id="wgs.c::FALSE" ref="wgs_8c.html#aa93f0eb578d23995850d61f7d61c55c1" />
+      <keyword name="MAX" id="wgs.c::MAX" ref="wgs_8c.html#afa99ec4acc4ecb2dc3c2d05da15d0e3f" />
+      <keyword name="M_PI" id="wgs.c::M_PI" ref="wgs_8c.html#ae71449b1cc6e6250b91f539153a7a0d3" />
+      <keyword name="wgs_read_name" id="wgs.c::wgs_read_name" ref="wgs_8c.html#a40613a3ec80b6172b296d1af74b4fd02" />
+      <keyword name="wgs_wireframe_new" id="wgs.c::wgs_wireframe_new" ref="wgs_8c.html#aca827bd3ee82263245de29cd904241b9" />
+      <keyword name="wgs_wireframe_free" id="wgs.c::wgs_wireframe_free" ref="wgs_8c.html#ac02680ab7c5def6b7753d7163356f0a2" />
+      <keyword name="wgs_wireframe_read" id="wgs.c::wgs_wireframe_read" ref="wgs_8c.html#a3edd80afcf2812221ee5800cf95d8259" />
+      <keyword name="wgs_object_new" id="wgs.c::wgs_object_new" ref="wgs_8c.html#a80555428160096300888bf440ed46f41" />
+      <keyword name="wgs_object_copy" id="wgs.c::wgs_object_copy" ref="wgs_8c.html#a00354bc4f9e11e9dfcdc217778fef4c6" />
+      <keyword name="wgs_object_free" id="wgs.c::wgs_object_free" ref="wgs_8c.html#a0c6368554f089ea0b5fb2fc758339739" />
+      <keyword name="wgs_object_allocate" id="wgs.c::wgs_object_allocate" ref="wgs_8c.html#abc29f4282912734b4df9c914f984b046" />
+      <keyword name="wgs_object_reallocate" id="wgs.c::wgs_object_reallocate" ref="wgs_8c.html#a43cc589de9d411a8755fa8ae1971b1e6" />
+      <keyword name="wgs_object_read" id="wgs.c::wgs_object_read" ref="wgs_8c.html#aab29ffb71cc92166de3ade05313f2ea5" />
+      <keyword name="wgs_object_reflect" id="wgs.c::wgs_object_reflect" ref="wgs_8c.html#ac688d5f7a1f30a22ff3dfbf13a2f6fdb" />
+      <keyword name="wgs_object_needs_transform" id="wgs.c::wgs_object_needs_transform" ref="wgs_8c.html#af9c6d3f4fc32506c6806ed811fb4e1bf" />
+      <keyword name="wgs_object_transform" id="wgs.c::wgs_object_transform" ref="wgs_8c.html#a077abc770338b61fd902416b33580ed1" />
+      <keyword name="wgs_wireframe_convert_to_global" id="wgs.c::wgs_wireframe_convert_to_global" ref="wgs_8c.html#a5cadd93880921b4c0289c19c5575e346" />
+    </keywords>
+    <files>
+      <file>tabs.css</file>
+      <file>tab_a.png</file>
+      <file>tab_b.png</file>
+      <file>tab_h.png</file>
+      <file>tab_s.png</file>
+      <file>nav_h.png</file>
+      <file>nav_f.png</file>
+      <file>bc_s.png</file>
+      <file>doxygen.png</file>
+      <file>closed.png</file>
+      <file>open.png</file>
+      <file>bdwn.png</file>
+      <file>sync_on.png</file>
+      <file>sync_off.png</file>
+      <file>stylesheet.css</file>
+      <file>jquery.js</file>
+      <file>dynsections.js</file>
+      <file>svm_8c.html</file>
+      <file>svm_8c__incl.png</file>
+      <file>wgs_8c.html</file>
+      <file>wgs_8c__incl.png</file>
+      <file>graph_legend.png</file>
+      <file>graph_legend.html</file>
+      <file>dir_68267d1309a1af8e8297ef4c3efbcdba.html</file>
+      <file>index.html</file>
+      <file>files.html</file>
+      <file>globals.html</file>
+      <file>globals.html</file>
+      <file>globals.html</file>
+      <file>globals.html</file>
+      <file>globals_func.html</file>
+      <file>globals_func.html</file>
+      <file>globals_defs.html</file>
+      <file>globals_defs.html</file>
+      <file>globals_defs.html</file>
+    </files>
+  </filterSection>
+</QtHelpProject>

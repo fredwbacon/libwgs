@@ -1,4 +1,4 @@
-VERSION=1.0.0
+VERSION=1.0.1
 DOCPATH=User_Manual/publish/en-US/libwgs/$(VERSION)
 
 SOURCES=User_Manual/en-US/User_Manual.xml \
