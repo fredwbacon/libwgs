@@ -1,0 +1,12 @@
+#!/bin/sh
+# Configuration requires that we rebuild the top level Makefiles
+# in this directory and lower directories
+
+
+ECHO=/bin/echo
+
+$ECHO ""
+$ECHO -n "Creating make files..."
+qmake -r SOLUTIONDIR=`pwd`
+$ECHO "Done."
+

@@ -355,7 +355,7 @@ wgsObject*
 wgs_object_reflect ( wgsObject* obj, int id )
 {
   char       tmp[81];
-  int        i, J, N, len, nl, np, j1, j2;
+  int        i, J=0, N, len, nl, np, j1, j2;
   wgsObject* refobj = NULL;
   Vector3d*  points;
 

@@ -1,0 +1,97 @@
+.TH "svm.c" 3 "Fri Oct 9 2020" "Version 1.0.1" "Langley Wireframe Geometry Library" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+svm.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <time\&.h>\fP
+.br
+\fC#include <math\&.h>\fP
+.br
+\fC#include 'svm\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBmatrix44d_identity\fP (Matrix44d m44)"
+.br
+.ti -1c
+.RI "void \fBmatrix44d_write\fP (FILE *fptr, Matrix44d m44)"
+.br
+.ti -1c
+.RI "void \fBmatrix44d_set_translate\fP (Matrix44d m44, double tx, double ty, double tz)"
+.br
+.ti -1c
+.RI "void \fBmatrix44d_set_scale\fP (Matrix44d m44, double xscale, double yscale, double zscale)"
+.br
+.ti -1c
+.RI "void \fBmatrix44d_xrotation_radians\fP (Matrix44d m44, double phi)"
+.br
+.ti -1c
+.RI "void \fBmatrix44d_yrotation_radians\fP (Matrix44d m44, double theta)"
+.br
+.ti -1c
+.RI "void \fBmatrix44d_zrotation_radians\fP (Matrix44d m44, double psi)"
+.br
+.ti -1c
+.RI "void \fBmatrix44d_mm\fP (Matrix44d a44, Matrix44d b44, Matrix44d c44)"
+.br
+.ti -1c
+.RI "void \fBmatrix44d_mv\fP (Matrix44d m44, Vector3d pin, Vector3d pout)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void matrix44d_identity (Matrix44d m44)"
+
+.PP
+Referenced by matrix44d_xrotation_radians(), matrix44d_yrotation_radians(), matrix44d_zrotation_radians(), wgs_object_new(), and wgs_object_transform()\&.
+.SS "void matrix44d_mm (Matrix44d a44, Matrix44d b44, Matrix44d c44)"
+
+.PP
+Referenced by wgs_object_read()\&.
+.SS "void matrix44d_mv (Matrix44d m44, Vector3d pin, Vector3d pout)"
+
+.PP
+Referenced by wgs_object_transform()\&.
+.SS "void matrix44d_set_scale (Matrix44d m44, double xscale, double yscale, double zscale)"
+
+.PP
+Referenced by wgs_object_read()\&.
+.SS "void matrix44d_set_translate (Matrix44d m44, double tx, double ty, double tz)"
+
+.PP
+Referenced by wgs_object_read()\&.
+.SS "void matrix44d_write (FILE * fptr, Matrix44d m44)"
+
+.SS "void matrix44d_xrotation_radians (Matrix44d m44, double phi)"
+
+.PP
+References matrix44d_identity()\&.
+.PP
+Referenced by wgs_object_read()\&.
+.SS "void matrix44d_yrotation_radians (Matrix44d m44, double theta)"
+
+.PP
+References matrix44d_identity()\&.
+.PP
+Referenced by wgs_object_read()\&.
+.SS "void matrix44d_zrotation_radians (Matrix44d m44, double psi)"
+
+.PP
+References matrix44d_identity()\&.
+.PP
+Referenced by wgs_object_read()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Langley Wireframe Geometry Library from the source code\&.

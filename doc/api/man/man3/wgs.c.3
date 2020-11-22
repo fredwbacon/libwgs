@@ -1,0 +1,174 @@
+.TH "wgs.c" 3 "Fri Oct 9 2020" "Version 1.0.1" "Langley Wireframe Geometry Library" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+wgs.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <time\&.h>\fP
+.br
+\fC#include <math\&.h>\fP
+.br
+\fC#include 'wgs\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBTRUE\fP   1"
+.br
+.ti -1c
+.RI "#define \fBFALSE\fP   0"
+.br
+.ti -1c
+.RI "#define \fBMAX\fP(a,  b)   (a)>(b) ? (a) : (b)"
+.br
+.ti -1c
+.RI "#define \fBM_PI\fP   3\&.1412592653589793238462643383"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBwgs_read_name\fP (FILE *fptr, char *name)"
+.br
+.ti -1c
+.RI "wgsWireframe * \fBwgs_wireframe_new\fP ()"
+.br
+.ti -1c
+.RI "void \fBwgs_wireframe_free\fP (wgsWireframe *wf)"
+.br
+.ti -1c
+.RI "wgsWireframe * \fBwgs_wireframe_read\fP (FILE *fptr)"
+.br
+.ti -1c
+.RI "wgsObject * \fBwgs_object_new\fP ()"
+.br
+.ti -1c
+.RI "wgsObject * \fBwgs_object_copy\fP (wgsObject *obj, int id)"
+.br
+.ti -1c
+.RI "void \fBwgs_object_free\fP (wgsObject *object)"
+.br
+.ti -1c
+.RI "Vector3d * \fBwgs_object_allocate\fP (int nline, int npnt)"
+.br
+.ti -1c
+.RI "Vector3d * \fBwgs_object_reallocate\fP (Vector3d *p, int nline, int npnt)"
+.br
+.ti -1c
+.RI "wgsObject * \fBwgs_object_read\fP (FILE *fptr)"
+.br
+.ti -1c
+.RI "wgsObject * \fBwgs_object_reflect\fP (wgsObject *obj, int id)"
+.br
+.ti -1c
+.RI "int \fBwgs_object_needs_transform\fP (wgsObject *obj)"
+.br
+.ti -1c
+.RI "void \fBwgs_object_transform\fP (wgsObject *obj)"
+.br
+.ti -1c
+.RI "void \fBwgs_wireframe_convert_to_global\fP (wgsWireframe *wf)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define FALSE   0"
+
+.PP
+Referenced by wgs_object_needs_transform(), wgs_read_name(), and wgs_wireframe_read()\&.
+.SS "#define M_PI   3\&.1412592653589793238462643383"
+
+.PP
+Referenced by wgs_object_read()\&.
+.SS "#define MAX(a, b)   (a)>(b) ? (a) : (b)"
+
+.PP
+Referenced by wgs_wireframe_read()\&.
+.SS "#define TRUE   1"
+
+.PP
+Referenced by wgs_object_needs_transform(), wgs_read_name(), and wgs_wireframe_read()\&.
+.SH "Function Documentation"
+.PP 
+.SS "Vector3d* wgs_object_allocate (int nline, int npnt)"
+
+.PP
+Referenced by wgs_object_read()\&.
+.SS "wgsObject* wgs_object_copy (wgsObject * obj, int id)"
+
+.PP
+References wgs_object_free(), and wgs_object_new()\&.
+.PP
+Referenced by wgs_object_reflect()\&.
+.SS "void wgs_object_free (wgsObject * object)"
+
+.PP
+Referenced by wgs_object_copy(), wgs_object_read(), and wgs_wireframe_free()\&.
+.SS "int wgs_object_needs_transform (wgsObject * obj)"
+
+.PP
+References FALSE, and TRUE\&.
+.PP
+Referenced by wgs_object_transform()\&.
+.SS "wgsObject* wgs_object_new ()"
+
+.PP
+References matrix44d_identity()\&.
+.PP
+Referenced by wgs_object_copy(), and wgs_object_read()\&.
+.SS "wgsObject* wgs_object_read (FILE * fptr)"
+
+.PP
+References M_PI, matrix44d_mm(), matrix44d_set_scale(), matrix44d_set_translate(), matrix44d_xrotation_radians(), matrix44d_yrotation_radians(), matrix44d_zrotation_radians(), wgs_object_allocate(), wgs_object_free(), wgs_object_new(), and wgs_read_name()\&.
+.PP
+Referenced by wgs_wireframe_read()\&.
+.SS "Vector3d* wgs_object_reallocate (Vector3d * p, int nline, int npnt)"
+
+.SS "wgsObject* wgs_object_reflect (wgsObject * obj, int id)"
+
+.PP
+References wgs_object_copy()\&.
+.PP
+Referenced by wgs_wireframe_convert_to_global()\&.
+.SS "void wgs_object_transform (wgsObject * obj)"
+
+.PP
+References matrix44d_identity(), matrix44d_mv(), and wgs_object_needs_transform()\&.
+.PP
+Referenced by wgs_wireframe_convert_to_global()\&.
+.SS "void wgs_read_name (FILE * fptr, char * name)"
+
+.PP
+References FALSE, and TRUE\&.
+.PP
+Referenced by wgs_object_read(), and wgs_wireframe_read()\&.
+.SS "void wgs_wireframe_convert_to_global (wgsWireframe * wf)"
+
+.PP
+References wgs_object_reflect(), and wgs_object_transform()\&.
+.SS "void wgs_wireframe_free (wgsWireframe * wf)"
+
+.PP
+References wgs_object_free()\&.
+.SS "wgsWireframe* wgs_wireframe_new ()"
+
+.PP
+Referenced by wgs_wireframe_read()\&.
+.SS "wgsWireframe* wgs_wireframe_read (FILE * fptr)"
+
+.PP
+References FALSE, MAX, TRUE, wgs_object_read(), wgs_read_name(), and wgs_wireframe_new()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Langley Wireframe Geometry Library from the source code\&.
